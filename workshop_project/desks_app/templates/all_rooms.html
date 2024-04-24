@@ -1,0 +1,24 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms</title>
+
+  </head>
+  <body>
+  <h2> Rooms: </h2>
+
+  {% for room in rooms %}
+    <ul>
+        <li> Room: <a href="{% url 'room_details' id=room.id %}">{{ room.room_name }}</a> | size: {{ room.room_size }}
+            | Available: | Projector available: {{ room.projector }}
+            <a href="{% url 'modify_room' id=room.id %}"><button type="submit" name="edit"> Edit </button></a>
+            <a href="{% url 'delete_room' id=room.id %}"><button type="submit" name="delete"> Delete </button></a>
+            <a href="{% url 'reserve_room' id=room.id %}"><button type="submit" name="reserve"> Reserve </button></a>
+        </li>
+    </ul>
+  {% endfor %}
+
+
+
+</body>
+</html>

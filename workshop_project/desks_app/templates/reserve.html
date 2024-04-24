@@ -1,0 +1,26 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation</title>
+
+  </head>
+  <body>
+  <h2> {{ room.room_name }} room reservation: </h2>
+
+ <form action="" method="post">
+        {% csrf_token %}
+
+      <label>Select date </label>
+     <input type="date" name="date" min="1900-01-01" max="3000-12-31">
+
+     <label> Comment </label>
+     <input type="text" name="comment" value="">
+
+<button type="submit" name="save" value="save"> Save </button>
+
+ </form>
+
+
+
+</body>
+</html>

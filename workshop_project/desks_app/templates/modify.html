@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Modify room </title>
+
+  </head>
+  <body>
+    <main>
+      <h2> Modify room details: </h2>
+    </main>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="room_name" > New room name </label>
+        <input type="text" name="room_name" value="{{ room.room_name }}">
+        <br>
+        <label for="room_size"> New room size </label>
+        <input type="number" name="room_size" value="{{ room.room_size }}">
+        <br>
+        <label> New projector </label>
+        <input type="checkbox" name="projector" {% if room.projector %}checked{% endif %}> Yes
+        <br>
+        <a href="/room/all_rooms/">
+            <button type="submit" name="save" value="save"> Save </button>
+        </a>
+   </form>
+  </body>
+</html>
+
