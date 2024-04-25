@@ -20,7 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g#uas8$^^o@4fl4j=$5d%2kn1nkggifw&xt9l7sfizmr8ia(-6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -74,15 +73,7 @@ WSGI_APPLICATION = 'workshop_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'HOST': '127.0.0.1',
-        'NAME': 'desks_db',
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'postgres',
-        'PASSWORD': 'coderslab',
-    }
-}
+
 
 
 # Password validation
@@ -125,3 +116,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+try:
+    from workshop_project.local_settings import DATABASES
+except ModuleNotFoundError:
+    print("Database configuration in local_settings.py is missing!")
+    print("Fill the data and try again!")
+    exit(0)
+
+
+try:
+    from workshop_project.local_settings import SECRET_KEY
+except ModuleNotFoundError:
+    print("Secretkey in local_settings.py is missing!")
+    print("Fill the data and try again!")
+    exit(0)
